@@ -1,0 +1,1 @@
+<h1 class={`text-3xl font-bold text-base-content ${$$props.class}`}><slot></slot></h1>
