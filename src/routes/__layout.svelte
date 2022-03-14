@@ -11,8 +11,12 @@
 	import { session } from '$app/stores';
 	import { supabase } from '$lib/supabase';
 	import { setAuthCookie, unsetAuthCookie } from '$lib/auth';
+	import Navbar from '$lib/nav/Navbar.svelte';
 
-	console.log('session set?', $session.user);
+	if ($session.user) {
+		console.log('🥡');
+	}
+
 	supabase.auth.onAuthStateChange(async (event, _session) => {
 		if (event == 'SIGNED_IN') {
 			await setAuthCookie(_session);
@@ -25,4 +29,5 @@
 	});
 </script>
 
-<main><slot /></main>
+<Navbar />
+<main><slot class="py-2 px-4" /></main>

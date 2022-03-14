@@ -55,7 +55,7 @@
 			bind:value={password}
 			class="input-bordered w-full mb-4"
 			name="email"
-			placeholder="orville_tootinbacher@popcornfarts.com"
+			placeholder="Somereallylongpassword"
 		/>
 		<InputSubmit
 			class="btn-primary btn-outline"
