@@ -3,10 +3,15 @@ import { toExpressRequest, toExpressResponse } from '$lib/expressify';
 
 export async function handleAuth({ event, resolve }) {
 	// Converts request to have `req.headers.cookie` on `req.cookies, as `getUserByCookie` expects parsed cookies on `req.cookies`
-	const request = event.request;
+	const request: Request = event.request;
 	const expressStyleRequest = await toExpressRequest(request);
-	const { user } = await supabase.auth.api.getUserByCookie(expressStyleRequest);
-	event.locals.token = expressStyleRequest.cookies['sb:token'] || undefined;
+	// console.log('cookies', JSON.stringify(expressStyleRequest.cookies, null, 2));
+	const { user, error } = await supabase.auth.api.getUserByCookie(expressStyleRequest);
+	if (error) {
+		console.log(error);
+	}
+	console.log({ cookieUser: user });
+	event.locals.token = expressStyleRequest.cookies['access_token'] || undefined;
 	event.locals.user = user;
 
 	if (user) {
@@ -27,12 +32,11 @@ export async function handleAuth({ event, resolve }) {
 
 	let response = await resolve(event);
 
-	// if auth request - set cookie in response headers
-	if (request.method == 'POST' && event.url.pathname === '/api/auth.json') {
-		const reqBody = await request.json();
-		const req = await toExpressRequest(request, reqBody);
-		supabase.auth.api.setAuthCookie(req, toExpressResponse(response));
-	}
+	// // if auth request - set cookie in response headers
+	// if (request.method == 'POST' && event.url.pathname === '/api/auth.json') {
+	// 	const req = await toExpressRequest(request, request.body);
+	// 	supabase.auth.api.setAuthCookie(req, toExpressResponse(response));
+	// }
 
 	return response;
 }

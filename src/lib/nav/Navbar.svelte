@@ -2,8 +2,11 @@
 	import { session } from '$app/stores';
 	import { supabase } from '../supabase';
 
-	const logout = () => {
-		return supabase.auth.signOut();
+	const logout = async () => {
+		const {error} = await supabase.auth.signOut();
+		if (error) {
+			console.log(error);
+		}
 	};
 </script>
 
@@ -22,7 +25,7 @@
 			{/if}
 		</ul>
 
-		{#if $session.user}
+		{#if $session.user?.user_profile}
 			<div class="dropdown dropdown-end">
 				<div tabindex="0" class="btn btn-ghost btn-circle avatar">
 					<div class="w-10 rounded-full">

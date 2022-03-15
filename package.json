@@ -45,6 +45,7 @@
     "cookie": "^0.4.1",
     "daisyui": "^2.6.4",
     "dotenv": "^16.0.0",
+    "jsonwebtoken": "^8.5.1",
     "svelte-fa": "^2.4.0"
   }
 }
