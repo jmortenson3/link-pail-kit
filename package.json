@@ -37,8 +37,8 @@
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
-    "@fortawesome/free-brands-svg-icons": "^6.0.0",
-    "@fortawesome/free-solid-svg-icons": "^6.0.0",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@lukeed/uuid": "^2.0.0",
     "@supabase/supabase-js": "^1.31.1",
     "cheerio": "^1.0.0-rc.10",

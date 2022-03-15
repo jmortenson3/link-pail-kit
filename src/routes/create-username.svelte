@@ -8,12 +8,13 @@
 	import { goto } from '$app/navigation';
 	import { supabase } from '$lib/supabase';
 	import Fa from 'svelte-fa';
-	import { faSignature } from '@fortawesome/free-solid-svg-icons';
+	import * as icons from '@fortawesome/free-solid-svg-icons';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import InputText from '$lib/components/InputText.svelte';
 	import Label from '$lib/components/Label.svelte';
 	import InputSubmit from '$lib/components/InputSubmit.svelte';
 	import { session } from '$app/stores';
+
 
 	let username: string = '';
 
@@ -36,7 +37,7 @@
 </script>
 
 <div class="max-w-sm mx-auto flex flex-col items-center">
-	<PageTitle>Create a username! <Fa icon={faSignature} /></PageTitle>
+	<PageTitle>Create a username!</PageTitle>
 	<form on:submit|preventDefault={setUsername} class="form-control w-full mb-12">
 		<Label>Email</Label>
 		<InputText

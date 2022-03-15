@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { OGTags } from '$lib/models';
 	import Fa from 'svelte-fa';
-	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+	import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 	export let ogTags: OGTags;
 </script>
@@ -16,7 +16,7 @@
 		<div class="flex-1">
 			<h2 class="pb-2 font-bold">
 				{ogTags.title}
-				<Fa icon={faArrowUpRightFromSquare} class="inline-block" />
+				<Fa icon={faExternalLinkAlt} class="inline-block" />
 			</h2>
 			{#if ogTags.description}
 				<p class="text-sm pl-2 mb-2 border-l-2 border-l-neutral">{ogTags.description}</p>
